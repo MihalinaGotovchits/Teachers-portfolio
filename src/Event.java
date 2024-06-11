@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public class Event {
+/*public class Event {
     BufferedReader reader;
     TimeOfWork timeOfWork = new TimeOfWork(reader);
     Student student = new Student(reader);
@@ -14,12 +14,12 @@ public class Event {
     private String eventLocation;
     private int participants;
     ArrayList<String> eventList = new ArrayList<>();
-    Year[] yearToData = new Year[timeOfWork.workExperience];//массив со стажем работы
+    //Year[] yearToData = new Year[timeOfWork.workExperience];//массив со стажем работы
 
     public Event(BufferedReader read) {
         reader = read;
 
-        for (int i = 0; i < yearToData.length; i++) {
+    /*    for (int i = 0; i < yearToData.length; i++) {
             yearToData[i] = new Year();
         }
     }
@@ -152,4 +152,4 @@ public class Event {
         System.out.println("3 - За год");
         System.out.println("4 - За пять лет");
     }
-}
+}*/

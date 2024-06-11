@@ -1,4 +1,6 @@
-public class Person {
+import java.util.Objects;
+
+public abstract class Person {
     protected String firstName;
     protected String secondName;
     protected String surName;
@@ -20,6 +22,12 @@ public class Person {
         this.firstName = firstName;
         this.secondName = secondName;
         this.surName = surName;
+    }
+
+    public Person(String firstName, String secondName, int id) {
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -52,5 +60,26 @@ public class Person {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return id == person.id && firstName.equals(person.firstName) && secondName.equals(person.secondName) && surName.equals(person.surName);
+    }
+
+    public int hashCode() {
+        return Objects.hash(firstName, secondName, surName, id);
+    }
+
+    public String toString() {
+        return "Человек{" +
+                "Фамилия='" + secondName + '\'' +
+                ", Имя='" + firstName + '\'' +
+                ", Отчество='" + surName + '\'' +
+                ", id=" + id +
+                '}';
     }
 }

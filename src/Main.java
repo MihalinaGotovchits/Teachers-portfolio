@@ -1,10 +1,56 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+        FileBackedPortfolioManager fileBackedPortfolioManager = new FileBackedPortfolioManager(Path.of(
+                "./resurse/AllInformationAboutTeacher.csv"));
+
+
+        // PortfolioManager portfolioManager = new PortfolioManager();
+
+        Teacher1 teacher = new Teacher1("Ломовцева", "Михалина", "Валентиновна");
+        Student1 student = new Student1("Семенова", "Анна", 1);
+        Event1 event = new Event1("Конкурс", "КДШИ", EventLevel.MUNICIPAL, 1, 2);
+        Awards awards = new Awards("Благодарственное письмо", "За работу", AwardsLevel.MUNICIPAL,
+                1, "Ломовцева Михалина Валентиновна");
+
+        Teacher1 teacher1 = new Teacher1("Готовчиц", "Оксана", "Викторовна");
+        Event1 event1 = new Event1("Фестиваль", "Брест", EventLevel.REGION, 5, 2);
+        Awards awards1 = new Awards("Грамота", "За работу", AwardsLevel.MUNICIPAL, 5,
+                "Готовчиц Оксана Викторовна");
+
+        fileBackedPortfolioManager.addTeacher(teacher);
+        fileBackedPortfolioManager.addStudents(student);
+        fileBackedPortfolioManager.addEvent(event);
+        fileBackedPortfolioManager.addAwardsForTeacher(awards);
+
+        fileBackedPortfolioManager.addTeacher(teacher1);
+        fileBackedPortfolioManager.addEvent(event1);
+        fileBackedPortfolioManager.addAwardsForTeacher(awards1);
+        System.out.println(teacher1.getEventId());
+        System.out.println(teacher1.getAwardsList());
+
+       /* portfolioManager.addTeacher(teacher);
+        //portfolioManager.addStudents(student);
+        //portfolioManager.addEvent(event);
+        portfolioManager.addAwardsForTeacher(awards);
+
+        /*System.out.println(portfolioManager.getTeachersList());
+        System.out.println(portfolioManager.getStudentsList());
+        System.out.println(portfolioManager.getEventsList());
+
+        System.out.println(portfolioManager.getTeacherById(1));
+        System.out.println(portfolioManager.getStudentById(2));
+        System.out.println(portfolioManager.getEventById(3));*/
+        //System.out.println(portfolioManager.getAwardsList());
+        //System.out.println(awards.getAwardsTitle());
+        //System.out.println(portfolioManager.getRewardById(4));
+    }
+    /*public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Teacher teacher = new Teacher(reader);
@@ -68,5 +114,5 @@ public class Main {
         System.out.println("11 - Получить информацию по количеству лауреатов");
         System.out.println("12 - Ввести стаж");
         System.out.println("13 - Выйти из программы");
-    }
+    }*/
 }

@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Event1 {
     private String eventTitle;
     private String eventLocation;
@@ -25,13 +27,19 @@ public class Event1 {
         this.eventId = eventId;
     }
 
-    public Event1(String eventTitle, String eventLocation, EventLevel eventLevel, int teacherId, int studentId, int eventId) {
+    public Event1(String eventTitle, String eventLocation, EventLevel eventLevel, int teacherId, int studentId) {
         this.eventTitle = eventTitle;
         this.eventLocation = eventLocation;
         this.eventLevel = eventLevel;
         this.teacherId = teacherId;
         this.studentId = studentId;
-        this.eventId = eventId;
+    }
+
+    public Event1(String eventTitle, String eventLocation, EventLevel eventLevel, int teacherId){
+        this.eventTitle = eventTitle;
+        this.eventLocation = eventLocation;
+        this.eventLevel = eventLevel;
+        this.teacherId = teacherId;
     }
 
     public Event1(String eventTitle, int teacherId, int studentId) {
@@ -94,5 +102,37 @@ public class Event1 {
 
     public void setEventId(int eventId) {
         this.eventId = eventId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Event1 event1 = (Event1) o;
+        return participants == event1.participants &&
+               teacherId == event1.teacherId &&
+               studentId == event1.studentId &&
+               eventId == event1.eventId &&
+               eventTitle.equals(event1.eventTitle) &&
+               eventLocation.equals(event1.eventLocation) &&
+               eventLevel == event1.eventLevel;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(eventTitle, eventLocation, eventLevel, participants, teacherId, studentId, eventId);
+    }
+
+    @Override
+    public String toString() {
+        return "Мероприятие{" +
+                "Название мероприятия='" + eventTitle + '\'' +
+                ", Место проведения='" + eventLocation + '\'' +
+                ", Уровень=" + eventLevel +
+                ", Количество участников=" + participants +
+                ", Id преподавателя=" + teacherId +
+                ", Id учащегося=" + studentId +
+                ", Id мероприятия=" + eventId +
+                '}';
     }
 }
